@@ -15,7 +15,7 @@ def weather():
     return "sunny"
 
 
-model_id = "apac.anthropic.claude-3-7-sonnet-20250219-v1:0"
+model_id = "au.anthropic.claude-haiku-4-5-20251001-v1:0"
 
 model = BedrockModel(
     model_id=model_id,
