@@ -6,8 +6,6 @@ from strands.models import BedrockModel
 from bedrock_agentcore.runtime import BedrockAgentCoreApp
 from strands.models import BedrockModel
 
-app = BedrockAgentCoreApp()
-
 
 @tool
 def weather():
@@ -27,7 +25,6 @@ agent = Agent(
 )
 
 
-@app.entrypoint
 def strands_agent_bedrock(payload):
     """
     Invoke the agent with a payload
@@ -38,4 +35,7 @@ def strands_agent_bedrock(payload):
 
 
 if __name__ == "__main__":
-    app.run()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("payload", type=str)
+    args = parser.parse_args()
+    response = strands_agent_bedrock(json.loads(args.payload))
